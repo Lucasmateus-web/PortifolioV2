@@ -1,49 +1,50 @@
-import { ExternalLink, BookOpen } from "lucide-react";
+import { ExternalLink, BookOpen, X } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import ScrollReveal from "./ScrollReveal";
 
 const projects = [
   {
     titleKey: "projects.supplier.title",
     descKey: "projects.supplier.desc",
+    caseStudyKey: "projects.supplier.caseStudy",
     techs: ["React", "Next.js", "Python", "SQL", "Firebase"],
     status: "production" as const,
     liveUrl: "https://portaldosfornecedores-engeman.vercel.app/",
-    caseUrl: "#",
   },
   {
     titleKey: "projects.dashboard.title",
     descKey: "projects.dashboard.desc",
+    caseStudyKey: "projects.dashboard.caseStudy",
     techs: ["React", "Power BI", "SQL"],
     status: "production" as const,
     liveUrl: "https://dashboardsuprimentos-2026.vercel.app/",
-    caseUrl: "#",
   },
   {
     titleKey: "projects.fafen.title",
     descKey: "projects.fafen.desc",
+    caseStudyKey: "projects.fafen.caseStudy",
     techs: ["React", "JavaScript", "SQL"],
     status: "production" as const,
     liveUrl: "https://indicadorfafen.vercel.app/",
-    caseUrl: "#",
   },
   {
     titleKey: "projects.logix.title",
     descKey: "projects.logix.desc",
+    caseStudyKey: "projects.logix.caseStudy",
     techs: ["React", "Python", "AI APIs"],
     status: "development" as const,
     liveUrl: "https://logix-4bnk.onrender.com",
-    caseUrl: "#",
   },
   {
     titleKey: "projects.gliclog.title",
     descKey: "projects.gliclog.desc",
+    caseStudyKey: "projects.gliclog.caseStudy",
     techs: ["React Native", "Firebase", "SQL"],
     status: "development" as const,
     liveUrl: "#",
-    caseUrl: "#",
   },
 ];
 
@@ -101,12 +102,34 @@ const ProjectsSection = () => {
                       {t("projects.viewProject")}
                     </a>
                   </Button>
-                  <Button size="sm" variant="ghost" className="rounded-xl text-xs" asChild>
-                    <a href={project.caseUrl}>
-                      <BookOpen className="h-3.5 w-3.5 mr-1.5" />
-                      {t("projects.caseStudy")}
-                    </a>
-                  </Button>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button size="sm" variant="ghost" className="rounded-xl text-xs">
+                        <BookOpen className="h-3.5 w-3.5 mr-1.5" />
+                        {t("projects.caseStudy")}
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-lg">
+                      <DialogHeader>
+                        <DialogTitle className="font-display">{t(project.titleKey)}</DialogTitle>
+                      </DialogHeader>
+                      <div className="mt-4 space-y-4">
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {t(project.caseStudyKey)}
+                        </p>
+                        <div className="flex flex-wrap gap-2 pt-2">
+                          {project.techs.map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-2.5 py-1 text-xs rounded-full bg-primary/10 text-primary font-medium"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 </div>
               </div>
             </ScrollReveal>
