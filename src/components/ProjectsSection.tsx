@@ -20,7 +20,7 @@ const projects = [
     caseStudyKey: "projects.dashboard.caseStudy",
     techs: ["React", "Power BI", "SQL"],
     status: "production" as const,
-    liveUrl: "https://dashboardsuprimentos-2026.vercel.app/",
+    liveUrl: "https://verde-floresta.vercel.app/",
   },
   {
     titleKey: "projects.fafen.title",
@@ -28,7 +28,7 @@ const projects = [
     caseStudyKey: "projects.fafen.caseStudy",
     techs: ["React", "JavaScript", "SQL"],
     status: "production" as const,
-    liveUrl: "https://indicadorfafen.vercel.app/",
+    liveUrl: "https://aquac-metrics.vercel.app/",
   },
   {
     titleKey: "projects.logix.title",
